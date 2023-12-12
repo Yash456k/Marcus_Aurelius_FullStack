@@ -19,7 +19,7 @@ let quotes = [
 
 
 ];
-var randQuote ;
+
 
 
 function quoteGen(){
@@ -29,11 +29,11 @@ function quoteGen(){
         $(".quote").text("No more quotes !");
     else 
     {
-        randQuote = Math.ceil(Math.random() * quotes.length) - 1;
+        let randQuote = Math.ceil(Math.random() * quotes.length) - 1;
         $("#quote-input").attr('value',randQuote);
 
 
-
+        //Using fetch here bcz i want to sent the data of which quote is seen by the user , and store it if he is logged in
         fetch('/quote', {
             method: 'POST',
             headers: {
@@ -51,7 +51,7 @@ function quoteGen(){
 
 
 
-
+        // the transition of fade in and out when a new quote is displayed , as well as the actual display login
         $(".quote").css("opacity", 0); 
         setTimeout(function () {
             $(".quote").html(' " ' + quotes[randQuote] + ' " ');
@@ -70,6 +70,8 @@ $(".quote-button").on("mousedown touchstart",function(event){
     
 })
 
+
+//theme changing
 
 function removeClass(){
     document.body.classList.remove('theme-purp');
