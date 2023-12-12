@@ -1,29 +1,26 @@
 require("dotenv").config();
 const express=require("express");
 const router = express();
-const collection = require("../routes/mongodb");
-const bcrypt = require("bcrypt");
+
 const {restrictToLoggedinUserOnly} = require('../middleware/auth')
+const { refreshQuotes, storeQuoteInDB, ReturnUserQuoteArray} = require('../controllers/staticRouter')
 
 router.get('/',(req,res)=>{
     
     const Name = req.user;
     if(!Name) 
-    res.render('home',{name:"some error ?"});
+    res.render('home',{name:"some error ?",user:false});
     else
-    res.render("home",{name : Name.name});
+    res.render("home",{name : Name.name,user:true});
 
     
 })
 
+router.get('/user-quote-array',ReturnUserQuoteArray)
 
-router.post('/quote', (req,res)=>{
+router.post("/refresh-quotes",refreshQuotes)
 
-    console.log(req.body.quoteNo);
-
-
-    
-})
+router.post('/quote',storeQuoteInDB)
 
 router.get('/bookmarks',restrictToLoggedinUserOnly,(req,res)=>{
 

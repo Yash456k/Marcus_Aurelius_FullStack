@@ -34,10 +34,21 @@ async function handleUserSignup(req,res) {
 
     await collection.insertMany([data]);
 
-    res.redirect("/");
+    return res.redirect("/");
+}
+
+ function handleUserLogout(req,res) {
+    try {
+    res.cookie('uid', '', { maxAge: 0 });
+    req.user = null;
+    return res.redirect('/');
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 module.exports = {
     handleUserLogin,
-    handleUserSignup
+    handleUserSignup,
+    handleUserLogout
 }

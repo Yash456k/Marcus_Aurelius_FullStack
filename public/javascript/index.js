@@ -20,10 +20,29 @@ let quotes = [
 
 ];
 
+function checkUser(){
+    fetch('/user-quote-array') // Assumes your server is running on the same domain
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data from server:', data);
+        console.log("works?????");
+        console.log(typeof(data));
+        data.quotes.forEach(element => {
+            quotes.splice(element,1);
+        });
+        console.log(quotes);
+        console.log(quotes.length);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+    
+}
 
+checkUser();
 
 function quoteGen(){
-    $(".quote-button").text("Next Quote")
+    document.querySelector(".quote-button").textContent = "Next Quote";
 
     if(quotes.length == 0)
         $(".quote").text("No more quotes !");
@@ -64,11 +83,15 @@ function quoteGen(){
 }
 
 
-$(".quote-button").on("mousedown touchstart",function(event){
+document.querySelector(".quote-button").addEventListener("mousedown", function (event) {
     event.preventDefault();
     quoteGen();
-    
-})
+});
+
+document.querySelector(".quote-button").addEventListener("touch", function (event) {
+    event.preventDefault();
+    quoteGen();
+});
 
 
 //theme changing

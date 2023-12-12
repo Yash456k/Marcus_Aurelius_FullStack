@@ -9,7 +9,7 @@ function setUser(user) {
         _id: user._id,
         name:user.name
      }
-    return jwt.sign(payload,secret_key,{expiresIn:"10m"})
+    return jwt.sign(payload,secret_key,{expiresIn:"4h"})
 }
 
 function getuser(token){

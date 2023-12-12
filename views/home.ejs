@@ -42,7 +42,19 @@
         <div class="quote">
             Click the button below to generate quotes!
         </div>
+        <div class="button-container">
           <button class="quote-button">Generate Quote</button>
+          <form action="/refresh-quotes" method="POST">
+            <button type="submit" class="refresh-button">Refresh Quotes</button>
+          </form>
+
+          <% if (locals.user) { %>
+           <form action="/user/logout" method="POST">
+            <button type="submit" class="refresh-button">Logout</button>
+          </form>
+          <% } %>
+          
+        </div>
     </div>
 
     <footer>
