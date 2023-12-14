@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express();
 const {handleUserLogin, handleUserSignup, handleUserLogout} = require('../controllers/user')
+const {restrictToNotLoggedInUserOnly} = require('../middleware/auth')
 
-router.get('/login',(req,res)=>{
+router.get('/login',restrictToNotLoggedInUserOnly,(req,res)=>{
     res.render('login');
 })
 
-router.get('/',(req,res)=>{
+router.get('/signup',restrictToNotLoggedInUserOnly,(req,res)=>{
     res.render('signup');
 })
 

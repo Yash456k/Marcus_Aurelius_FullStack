@@ -21,8 +21,15 @@ mongoose.connect(process.env.DATABASE_URL)
         quotesViewed:{
             type:[Number],
             require:false
+        },
+        bookmarks:{
+            type:[Number],
+            require:false,
+            unique:true
         }
+
     })
+
 
     const collection = new mongoose.model("MarcusLoginCollection",UserSchema)
 

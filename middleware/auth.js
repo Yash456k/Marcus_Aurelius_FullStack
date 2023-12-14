@@ -25,4 +25,18 @@ async function checkAuth(req,res,next) {
     next()
 }
 
-module.exports= {restrictToLoggedinUserOnly , checkAuth};
+async function restrictToNotLoggedInUserOnly(req,res,next) {
+
+    const userUid = req.cookies?.uid;
+
+
+
+    const user = getuser(userUid);
+
+    if(user)  return res.redirect('/')
+
+    next()
+
+}
+
+module.exports= {restrictToLoggedinUserOnly , checkAuth , restrictToNotLoggedInUserOnly };

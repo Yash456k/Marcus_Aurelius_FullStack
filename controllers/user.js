@@ -17,7 +17,7 @@ async function handleUserLogin(req,res) {
             
         }
         else
-        return res.send("wrong pass");
+        return res.render("login",{error:"Wrong password buddy, try again"});
     }catch(error){
         return res.send("problem logging in")
         
@@ -29,12 +29,13 @@ async function handleUserSignup(req,res) {
     const data= {
         name:req.body.name,
         password:hashPass,
-        quotesViewed:[]
+        quotesViewed:[],
+        bookmarks:[]
     };
 
     await collection.insertMany([data]);
 
-    return res.redirect("/");
+    return res.redirect("/user/login");
 }
 
  function handleUserLogout(req,res) {
@@ -50,5 +51,6 @@ async function handleUserSignup(req,res) {
 module.exports = {
     handleUserLogin,
     handleUserSignup,
-    handleUserLogout
+    handleUserLogout,
+    
 }
