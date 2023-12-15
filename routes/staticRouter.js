@@ -23,6 +23,8 @@ router.post('/quote',storeQuoteInDB)
 
 router.post('/bookmark-quote',storeBookmarkForUser)
 
+
+
 router.get('/bookmarks',restrictToLoggedinUserOnly,(req,res)=>{
 
     res.render('bookmarks')

@@ -8,13 +8,12 @@
     --link-col: #f9f9f9;
 }
 
-.form-title{
+.form-title {
     font-size: 3.3rem;
     text-align: center;
-
 }
 
-.title-div{
+.title-div {
     width: 100%;
     background-color: var(--title-col);
     margin: 0;
@@ -27,12 +26,10 @@
     padding: 0;
     font-size: 2.7rem;
     font-family: 'Poppins', sans-serif;
-    font-family:cursive;
+    font-family: cursive;
     color: var(--title-text);
     text-align: center;
     transition: background ease-in-out .2s, color ease-in-out .2s;
-
-    
 }
 
 body {
@@ -54,7 +51,6 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     padding: 40px 60px;
     margin: 50px;
-
 }
 
 .container {
@@ -64,14 +60,14 @@ body {
     text-align: center;
 }
 
-.login-form {
-    margin: 20px 0px;
+.signup-form {
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.login-form input {
+.signup-form input {
     margin: 10px;
     padding: 10px;
     border: 2px solid var(--text-col);
@@ -80,7 +76,7 @@ body {
     transition: border ease-in-out .4s;
 }
 
-.login-form input[type="submit"] {
+.signup-form input[type="submit"] {
     background-color: var(--button-bg-col);
     color: var(--button-text-col);
     font-size: 1.5rem;
@@ -88,19 +84,19 @@ body {
     transition: background ease-in-out .4s, color ease-in-out .4s;
 }
 
-.login-form input[type="submit"]:hover {
-    background-color: #535353;
+.signup-form input[type="submit"]:hover {
+    background-color: #333;
 }
 
-.signup-link {
+.login-link {
     margin-top: 20px;
     text-decoration: none;
     color: var(--text-col);
     transition: color ease-in-out .4s;
 }
 
-.signup-link:hover {
-    color: #707070;
+.login-link:hover {
+    color: #555;
 }
 
 .error-message {
@@ -110,10 +106,8 @@ body {
 }
 
 @media (max-width: 600px) {
-
-    .page-title{
-      font-size: 1.7rem;
-      margin-top: 40px;
+    .page-title {
+        font-size: 1.7rem;
+        margin-top: 40px;
     }
-
 }

@@ -221,6 +221,28 @@ body {
   background-color: var(--button-bg-col);
   color: var(--title-text);;
 }
+.bookmark-form {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.bookmark-button {
+  background-color:var(--title-text);;
+  color:  var(--button-bg-col);
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background ease-in-out .8s, color ease-in-out .8s;
+}
+
+.bookmark-button:active {
+  background-color: var(--button-bg-col);
+  color: var(--title-text);;
+}
+
 
 /* Add styles for the Generate Quote and Refresh Quotes buttons */
 .button-container {
@@ -229,7 +251,12 @@ body {
   align-items: center;
 }
 
-svg{
+#refresh-svg{
+  fill: var(--button-text-col);
+  transition: fill ease-in-out .8s
+}
+
+#bookmarkedIcon {
   fill: var(--button-text-col);
   transition: fill ease-in-out .8s
 }
