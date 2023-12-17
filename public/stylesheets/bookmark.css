@@ -1,0 +1,179 @@
+:root {
+    --background-col: #f9f9f9;
+    --title-col: black;
+    --title-text: #f9f9f9;
+    --text-col: black;
+    --link-col: #f9f9f9;
+}
+
+.form-title {
+    font-size: 3.3rem;
+    text-align: center;
+}
+
+.title-div {
+    width: 100%;
+    background-color: var(--title-col);
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, .5);
+    transition: background ease-in-out .4s, color ease-in-out .4s;
+}
+
+.page-title {
+    padding: 0;
+    font-size: 2.7rem;
+    font-family: 'Poppins', sans-serif;
+    font-family: cursive;
+    color: var(--title-text);
+    text-align: center;
+    transition: background ease-in-out .2s, color ease-in-out .2s;
+}
+
+body {
+    display: flex;
+    background-color: var(--background-col);
+    color: var(--text-col);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kalam', cursive;
+    transition: background ease-in-out .4s, color ease-in-out .4s;
+}
+
+.logout-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .logout-button {
+    background-color:var(--title-text);;
+    color:  var(--button-bg-col);
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background ease-in-out .8s, color ease-in-out .8s;
+  }
+  
+  .logout-button:active {
+    background-color: var(--button-bg-col);
+    color: var(--title-text);;
+  }
+  .bookmark-form {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .bookmark-button {
+    background-color:var(--title-text);;
+    color:  var(--button-bg-col);
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background ease-in-out .8s, color ease-in-out .8s;
+  }
+  
+  .bookmark-button:active {
+    background-color: var(--button-bg-col);
+    color: var(--title-text);;
+  }
+
+
+  /* ... previous CSS code ... */
+.delete-form {
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.delete-button {
+    background-color: #ffffff; /* You can choose the color you prefer for delete button */
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background ease-in-out .8s, color ease-in-out .8s;
+}
+
+svg {
+    height: 30px;
+    width: 30px;
+}
+
+.delete-button:active {
+    background-color: #dc3545; /* You can choose the color you prefer for active state */
+}
+/* ... remaining CSS code ... */
+
+
+.card {
+    width: 60vw;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    padding: 40px 60px;
+    margin: 50px;
+}
+.quoteCard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    width: 80%;
+    padding: 20px 30px;
+    margin: 50px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.homepage-link {
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--link-col);
+    transition: color ease-in-out .4s;
+}
+
+.homepage-link:hover {
+    color: #707070;
+}
+
+@media (max-width: 600px) {
+
+    .form-title {
+        font-size: 2.3rem;
+    }
+    .page-title {
+        font-size: 1.7rem;
+        margin-top: 50px;
+    }
+    .card {
+        width: 60vw;
+
+    }
+    .quoteCard {
+        width: 100%;
+        padding: 10px 10px;
+        margin: 40px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

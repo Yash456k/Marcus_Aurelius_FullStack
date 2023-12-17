@@ -1,5 +1,5 @@
 require("dotenv").config();
-const collection = require("../routes/mongodb");
+const collection = require("../model/mongodb");
 const bcrypt = require("bcrypt");
 const {setUser} = require('../service/auth')
 

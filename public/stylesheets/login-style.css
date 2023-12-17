@@ -95,12 +95,23 @@ body {
 .signup-link {
     margin-top: 20px;
     text-decoration: none;
+    color: #e76000;
+    transition: color ease-in-out .4s;
+}
+
+.homepage-link {
+    margin-top: 20px;
+    text-decoration: none;
     color: var(--text-col);
     transition: color ease-in-out .4s;
 }
 
-.signup-link:hover {
+.homepage-link:hover {
     color: #707070;
+}
+
+.signup-link:hover {
+    color: #739072;
 }
 
 .error-message {

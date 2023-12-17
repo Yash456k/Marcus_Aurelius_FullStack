@@ -1,4 +1,4 @@
-const collection = require("../routes/mongodb");
+const collection = require("../model/mongodb");
 
 
 

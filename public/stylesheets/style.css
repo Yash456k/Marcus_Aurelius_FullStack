@@ -132,20 +132,36 @@ body {
     
 }
 
-.refresh-button {
+.tweakButtons {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.saveBookmarkButton {
+  color: var(--button-text-col);
+  background-color: var(--button-bg-col) ;
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, .5);
   padding: 12px;
   border: none;
-  transition: background ease-in-out .8s, color ease-in-out .8s, margin .25s, box-shadow .25s;
+  transition: background ease-in-out .8s, color ease-in-out .8s, margin .15s, box-shadow .15s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.refresh-button:active {
+
+.saveBookmarkButton:active {
   margin-top: 30px;
-  margin-bottom: 90px;
+  margin-bottom: 30px;
   box-shadow: none;
 }
+
 
 .button-container {
   display: flex;
@@ -281,10 +297,23 @@ body {
   margin-bottom: 30px;
   box-shadow: none;
 }
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  overflow-x: hidden;
+}
+
+.quote {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
 
 
 footer {
-  width: 100%;
+  width: 100vw;
   background-color: var(--title-col);
   color: var(--title-text);
   padding: 10px;
