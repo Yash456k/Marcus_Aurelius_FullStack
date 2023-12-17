@@ -115,7 +115,7 @@ async function quoteGen(){
     document.querySelector(".quote-button").textContent = "Next Quote";
 
     if (copyQuotes.length === 0) {
-        $(".quote").text("No more quotes !");
+        $(".quote").text("No more quotes! Press the 'Refresh Quotes' button to refresh quotes");
         noMoreQuotes = true;
       } else {
         try {
@@ -194,6 +194,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         changeBookmarkColor();
         
         } else {
+            document.querySelector(".quote").textContent = "Cannot bookmark this !"
             console.log("Cannot bookmark this !")
             console.log("bookmark inside the cannot bookmark if case   = " + bookmarkMaybe);
             console.log("copy quotes length :" + copyQuotes.length);

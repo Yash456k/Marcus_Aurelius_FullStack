@@ -223,6 +223,7 @@ svg {
     width: 80%;
     padding: 20px 30px;
     margin: 50px 30px;
+    font-size: 1.1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
