@@ -13,8 +13,27 @@
 
 <body>
     <div class="title-div">
-        <h1 class="page-title">Marcus Aurelius Quote Randomizer</h1>
+        <h1 class="page-title">Quotes by Marcus Aurelius</h1>
     </div>
+
+    <div class="colors">
+
+        <button id="theme-purp-button" class="round-button">
+            <div class="half top-half"></div>
+            <div class="half bottom-half"></div>
+          </button>
+          
+          <button id="theme-bw-button" class="round-button">
+            <div class="half top-half"></div>
+            <div class="half bottom-half"></div>
+          </button>
+          
+          <button id="theme-green-button" class="round-button">
+            <div class="half top-half"></div>
+            <div class="half bottom-half"></div>
+          </button>
+          
+        </div>
 
     <div class="card">
         <div class="form-div">
@@ -22,12 +41,12 @@
         </div>
 
         <div class="container">
-            <!-- Add your bookmark content here -->
+           
 
             <% quotes.forEach(element => { %>
                 <div class="quoteCard">
                     <%= element.content %>
-                    <!-- Your existing code for the delete button goes here -->
+                    
                     <form action="/bookmarkDelete" method="POST" class="delete-form">
                         <input type="hidden" name="quoteId" value="<%= element.id %>">
                         <button type="submit" class="delete-button">
@@ -44,7 +63,7 @@
               <button type="submit" class="bookmark-button">Home</button>
             </form>
 
-            <!-- Example link to go back to the homepage -->
+            
             <a class="homepage-link" href="/">Back to Quotes</a>
         </div>
     </div>

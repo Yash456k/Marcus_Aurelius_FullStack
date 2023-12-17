@@ -1,12 +1,45 @@
-:root {
-    --background-col: #f9f9f9;
-    --title-col: black;
-    --title-text: #f9f9f9;
-    --button-bg-col: black;
-    --text-col: black;
-    --button-text-col: white;
-    --link-col: #f9f9f9;
-}
+:root{
+    --background-col : #f9f9f9;
+      --title-col : black;
+      --title-text : #f9f9f9;
+      --button-bg-col : black;
+      --text-col : black;
+      --button-text-col : white;
+      --link-col : #f9f9f9;
+  
+  }
+  
+  
+  .theme-purp{
+    --background-col :#FFFBF5;
+    --title-col :     #F7EFE5;
+    --title-text :    #8d7997;
+    --button-bg-col : #FFFBF5;
+    --text-col :      #C3ACD0;
+    --button-text-col:#8c2c91;
+    --link-col :      #70438a;
+  }
+  
+  .bw{
+      --background-col : #f9f9f9;
+      --title-col :      black;
+      --title-text :     #f9f9f9;
+      --button-bg-col :  black;
+      --text-col :       black;
+      --button-text-col :white;
+      --link-col :       #f9f9f9;
+  }
+  
+  .forest{
+    --background-col :#3A4D39;
+    --title-col :     #739072;
+    --title-text :    #ECE3CE;
+    --button-bg-col : #739072;
+    --text-col :      #739072;
+    --button-text-col:#ECE3CE;
+    --link-col :      #ECE3CE;
+  
+  }
 
 .form-title {
     font-size: 3.3rem;

@@ -1,4 +1,5 @@
 const collection = require("../model/mongodb");
+const {quoteCollection} = require('../model/quotes')
 
 
 
@@ -57,7 +58,6 @@ async function storeQuoteInDB(req, res) {
             console.log("User push successful");
             res.status(200).send("Quote stored successfully");
         } else {
-            // Handle the case where there is no user
             res.status(200).send("Unauthorized");
         }
     } catch (error) {
@@ -106,10 +106,88 @@ async function storeBookmarkForUser(req, res) {
     }
 }
 
+async function openBookmarksPage(req,res) {
+    try {
+        const user = await collection.findOne({ name: req.user.name });
+
+        if (!user) {
+
+            return res.status(404).send('User not found');
+        }
+
+
+        const bookmarks = user.bookmarks;
+
+
+        const JustQuotes = await quoteCollection.findOne({ name: "QuotesAccess" });
+         allQuotes = JustQuotes.quote
+
+    console.log("All quotes length:", allQuotes.length);
+
+
+
+if (allQuotes) {
+  const bookmarkedQuotes = bookmarks.map((bookmarkIndex) => allQuotes[bookmarkIndex]).filter(Boolean);
+
+
+  if (bookmarkedQuotes.length > 0) {
+    const quotesWithIds = bookmarkedQuotes.map((quote, index) => ({
+      id: index, 
+      content: quote,
+    }));
+
+    res.render('bookmarks', { quotes: quotesWithIds });
+  } else {
+    console.log('No bookmarked quotes found');
+    res.render('bookmarks', { quotes: [] });
+  }
+} else {
+  console.log('No quotes found');
+  res.render('bookmarks', { quotes: [] });
+}
+
+
+
+
+    } catch (error) {
+        console.error('Error fetching bookmarks:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+async function deleteBookmark(req,res) {
+    console.log("ID OF QUOTE ===" + req.body.quoteId);
+
+  const User = req.user;
+  console.log("current quote no=" + req.body.currentQuote);
+
+  try {
+    const userCollection = await collection.findOne({ name: User.name });
+
+    await collection.updateOne(
+      { name: User.name },
+      { $set: { [`bookmarks.${req.body.quoteId}`]: null } }
+    );
+
+    await collection.updateOne(
+      { name: User.name },
+      { $pull: { bookmarks: null } }
+    );
+
+    res.redirect('/bookmarks');
+  } catch (error) {
+    console.error("Error removing bookmark:", error);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
 
 module.exports = {
     ReturnUserQuoteArray,
     refreshQuotes,
     storeQuoteInDB,
-    storeBookmarkForUser
+    storeBookmarkForUser,
+    openBookmarksPage,
+    deleteBookmark
+
 }

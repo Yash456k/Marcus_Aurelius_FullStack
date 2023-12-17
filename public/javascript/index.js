@@ -52,8 +52,6 @@ let quotes = [
   ]
 
 let copyQuotes = quotes.map(elem => elem);
-console.log("quotes :" );
-console.log(copyQuotes);
 let UserLoggedIn=false;
 let bookmarkMaybe = null;
 let noMoreQuotes = false ;
@@ -93,11 +91,6 @@ function changeBookmarkColor() {
        if(data)
        {
         UserLoggedIn=true;
-        console.log('Data from server:', data);
-        console.log("works?????");
-        console.log(typeof(data));
-        console.log("Bookmark fo the user are :" )
-        console.log( data.bookmarks)
 
         data.bookmarks.forEach(element =>{
           copyQuotes[element][2] = true;
@@ -109,9 +102,6 @@ function changeBookmarkColor() {
           copyQuotes.splice(element, 1);
         });
        }
-    
-        console.log(copyQuotes);
-        console.log(copyQuotes.length);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -119,7 +109,6 @@ function changeBookmarkColor() {
 
 checkUser();
 
-// Call the empty function
 
 
 async function quoteGen(){
@@ -132,7 +121,6 @@ async function quoteGen(){
         try {
           if(prevRandQuote!=null)
           {copyQuotes.splice(prevRandQuote, 1);
-            console.log("destroyed the previous quote = " + prevRandQuote)
           }
           if (copyQuotes.length === 0) {
             $(".quote").text("No more quotes !");
@@ -140,7 +128,7 @@ async function quoteGen(){
           } else {
            randQuote = Math.ceil(Math.random() * copyQuotes.length) - 1;
            prevRandQuote=randQuote;
-          // Using await with fetch
+
           const response = await fetch('/quote', {
             method: 'POST',
             headers: {
@@ -151,34 +139,17 @@ async function quoteGen(){
     
           const responseData = await response;
     
-          // Opacity code
           document.querySelector(".quote").style.opacity = 0;
-          console.log("opacity is 0");
     
           setTimeout(function () {
-            console.log("randQuote: ", randQuote);
-            console.log("copyQuotes: ", copyQuotes);
             document.querySelector(".quote").innerHTML = ' " ' + copyQuotes[randQuote][1] + ' " ';
 
             changeBookmarkColor();
-          
-            
-
-            console.log("randQuote: ", randQuote);
-            console.log("copyQuotes: ", copyQuotes);
-            console.log(copyQuotes[randQuote]);
-
-
-            //stores current quote unique id in case of bookmark
 
             bookmarkMaybe=copyQuotes[randQuote][0];
-            
-
-
-            
+             
           }, 200);
-    
-          // Ensure that the opacity is set back to 1 after the timeout
+  
           setTimeout(function () {
             document.querySelector(".quote").style.opacity = 1;
           }, 400);
@@ -202,9 +173,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         {document.querySelector(".quote").textContent = "Please Login to Save Quotes !"}
         else if(!noMoreQuotes && bookmarkMaybe!=null) {
 
-            console.log("randquote inside bookmarkButtonCall   = " + randQuote)
-            console.log("bookmark inside bookmarkButtonCall   = " + bookmarkMaybe)
-          console.log("bookmark maybe of copy quotes issss =" + copyQuotes[randQuote][2]);
         const response = await fetch("/bookmark-quote", {
           method: "POST",
           headers: {
@@ -218,12 +186,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             return response;
         })
         .then(data => {
-            console.log('Success:', data);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-        console.log(copyQuotes[randQuote][2]);
         copyQuotes[randQuote][2] = !copyQuotes[randQuote][2];
         changeBookmarkColor();
         
@@ -245,6 +211,10 @@ document.querySelector(".quote-button").addEventListener("click", async function
     quoteGen();
 });
 
+const theme = localStorage.getItem('theme');
+
+if(theme)
+document.body.classList.add(theme);
 
 
 //theme changing part
@@ -259,12 +229,14 @@ $("#theme-purp-button").on("mousedown touchstart",function(event){
 
     removeClass();
     document.body.classList.add('theme-purp');
+    localStorage.setItem('theme','theme-purp');
 })
 
 $("#theme-bw-button").on("mousedown touchstart",function(event){
 
     removeClass();
     document.body.classList.add('bw');
+    localStorage.setItem('theme','bw');
     
 })
 
@@ -272,4 +244,5 @@ $("#theme-green-button").on("mousedown touchstart",function(event){
 
     removeClass();
     document.body.classList.add("forest");
+    localStorage.setItem('theme','forest');
 })

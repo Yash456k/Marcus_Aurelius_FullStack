@@ -1,10 +1,102 @@
-:root {
-    --background-col: #f9f9f9;
-    --title-col: black;
-    --title-text: #f9f9f9;
-    --text-col: black;
-    --link-col: #f9f9f9;
-}
+:root{
+    --background-col : #f9f9f9;
+      --title-col : black;
+      --title-text : #f9f9f9;
+      --button-bg-col : black;
+      --text-col : black;
+      --button-text-col : white;
+      --link-col : #f9f9f9;
+  
+  }
+  
+  
+  .theme-purp{
+    --background-col :#FFFBF5;
+    --title-col :     #F7EFE5;
+    --title-text :    #8d7997;
+    --button-bg-col : #FFFBF5;
+    --text-col :      #C3ACD0;
+    --button-text-col:#8c2c91;
+    --link-col :      #70438a;
+  }
+  
+  .bw{
+      --background-col : #f9f9f9;
+      --title-col :      black;
+      --title-text :     #f9f9f9;
+      --button-bg-col :  black;
+      --text-col :       black;
+      --button-text-col :white;
+      --link-col :       #f9f9f9;
+  }
+  
+  .forest{
+    --background-col :#3A4D39;
+    --title-col :     #739072;
+    --title-text :    #ECE3CE;
+    --button-bg-col : #739072;
+    --text-col :      #739072;
+    --button-text-col:#ECE3CE;
+    --link-col :      #ECE3CE;
+  
+  }
+
+  .round-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    margin: 40px 5px; 
+    position: relative;
+    overflow: hidden;
+    border : 2px solid var(--text-col);
+    transition: border ease-in-out .4s;
+  }
+
+
+  
+  .half {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+  }
+  
+  .top-half {
+    top: 0;
+    right: 0;
+   
+  }
+  
+  .bottom-half {
+    bottom: 0;
+    right: 0;
+  }
+
+  #theme-purp-button .top-half{
+    
+    background-color: #F7EFE5;
+  }
+  #theme-purp-button .bottom-half{
+    background-color: #C3ACD0;
+  }
+
+
+  #theme-bw-button .top-half{
+    background-color: black;
+  }
+  #theme-bw-button .bottom-half{
+    background-color: #f9f9f9;
+  }
+
+
+  #theme-green-button .top-half{
+    background-color: #ECE3CE;
+  }
+  #theme-green-button .bottom-half{
+    background-color: #739072;
+  }
+
+  
+
 
 .form-title {
     font-size: 3.3rem;
@@ -33,7 +125,7 @@
 body {
     display: flex;
     background-color: var(--background-col);
-    color: var(--text-col);
+    color: var(--title-text);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -50,7 +142,7 @@ body {
   }
   
   .logout-button {
-    background-color:var(--title-text);;
+    background-color:var(--title-text);
     color:  var(--button-bg-col);
     font-size: 1rem;
     padding: 8px 12px;
@@ -87,14 +179,13 @@ body {
   }
 
 
-  /* ... previous CSS code ... */
 .delete-form {
     padding: 10px;
     margin-left: 20px;
 }
 
 .delete-button {
-    background-color: #ffffff; /* You can choose the color you prefer for delete button */
+    background-color: #ffffff; 
     color: #fff;
     font-size: 1rem;
     padding: 12px 12px;
@@ -110,21 +201,23 @@ svg {
 }
 
 .delete-button:active {
-    background-color: #dc3545; /* You can choose the color you prefer for active state */
+    background-color: #dc3545; 
 }
-/* ... remaining CSS code ... */
+
 
 
 .card {
     width: 60vw;
-    background-color: white;
+    background-color: var(--title-col);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     padding: 40px 60px;
     margin: 50px;
+    transition: background ease-in-out .6s, color ease-in-out .6s;
 }
 .quoteCard {
     background-color: white;
+    color: var(--text-col);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     width: 80%;
@@ -134,6 +227,7 @@ svg {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    transition: background ease-in-out .6s, color ease-in-out .6s;
 }
 
 .container {
@@ -163,6 +257,12 @@ svg {
         font-size: 1.7rem;
         margin-top: 50px;
     }
+    .round-button {
+        width: 60px;
+        height: 60px;
+        margin: 40px 15px;
+      }
+
     .card {
         width: 60vw;
 

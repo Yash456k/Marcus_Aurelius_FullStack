@@ -170,7 +170,7 @@ body {
 }
 
 .page-title {
-    padding: 0;
+    padding: 10px;
     font-size: 2.7rem;
     font-family: 'Poppins', sans-serif;
     font-family:cursive;
@@ -260,7 +260,6 @@ body {
 }
 
 
-/* Add styles for the Generate Quote and Refresh Quotes buttons */
 .button-container {
   display: flex;
   flex-direction: column;
