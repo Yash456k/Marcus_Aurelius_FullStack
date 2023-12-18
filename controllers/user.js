@@ -11,10 +11,11 @@ async function handleUserLogin(req,res) {
         if(await bcrypt.compare(req.body.password, check.password))
         {
             const token = setUser(check);
-            res.cookie('uid',token,{
-                httpOnly:true,
-                maxAge:1.44e+7
-            })
+            res.cookie('uid', token, {
+                httpOnly: true,
+                maxAge: 1.44e+7,
+                secure: true  
+            });
 
             return res.redirect('/');
             
