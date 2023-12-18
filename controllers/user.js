@@ -11,7 +11,10 @@ async function handleUserLogin(req,res) {
         if(await bcrypt.compare(req.body.password, check.password))
         {
             const token = setUser(check);
-            res.cookie('uid',token)
+            res.cookie('uid',token,{
+                httpOnly:true,
+                maxAge:1.44e+7
+            })
 
             return res.redirect('/');
             
@@ -25,7 +28,12 @@ async function handleUserLogin(req,res) {
 }
 
 async function handleUserSignup(req,res) {
-    const hashPass = await bcrypt.hash(req.body.password ,10)
+
+    const UserExist = await collection.findOne({name:req.body.name})
+    if(UserExist)
+    res.render('signup',{error:"Username already exists !"});
+    else {
+        const hashPass = await bcrypt.hash(req.body.password ,10)
     const data= {
         name:req.body.name,
         password:hashPass,
@@ -36,6 +44,7 @@ async function handleUserSignup(req,res) {
     await collection.insertMany([data]);
 
     return res.redirect("/user/login");
+    }
 }
 
  function handleUserLogout(req,res) {

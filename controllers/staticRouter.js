@@ -8,8 +8,6 @@ async function ReturnUserQuoteArray(req,res) {
     if(req.user)
     {
         const User = await collection.findOne({name:req.user.name})
-        console.log("quotes viewed : " + User.quotesViewed);
-        console.log("bookmarks" + User.bookmarks)
         responseData = {quotesViewed:User.quotesViewed,
                         bookmarks:User.bookmarks}
     }
@@ -23,25 +21,23 @@ async function refreshQuotes(req,res) {
     try {
         if(req.user)
         {
-            console.log("inside refresh try catch")
         await collection.findOneAndUpdate({name:req.user.name},{
             $set: { quotesViewed: [] } 
             
         })
         }
         else {
-            console.log("refreshed but user not logged in")
+
         }
-        console.log('set successful')
+
     } catch (error) {
-        console.log(error);
-        console.log("error in refreshing quotes")
+
     }
     res.redirect('/');
 }
 
 async function storeQuoteInDB(req, res) {
-    console.log(req.body.quoteNo);
+
     const quoteNumber = req.body.quoteNo;
 
     try {
@@ -55,7 +51,6 @@ async function storeQuoteInDB(req, res) {
                 }
             );
 
-            console.log("User push successful");
             res.status(200).send("Quote stored successfully");
         } else {
             res.status(200).send("Unauthorized");
@@ -68,17 +63,14 @@ async function storeQuoteInDB(req, res) {
 
 
 async function storeBookmarkForUser(req, res) {
-    console.log("inside store bookmark user");
     try {
         const User = req.user;
-        console.log("current quote no=" + req.body.currentQuote);
 
         const userCollection = await collection.findOne({ name: User.name });
 
         const currentQuote = parseInt(req.body.currentQuote);
 
         if (userCollection.bookmarks.includes(currentQuote)) {
-            console.log("quote removed");
             await collection.findOneAndUpdate(
                 { name: User.name },
                 {
@@ -87,9 +79,8 @@ async function storeBookmarkForUser(req, res) {
                     },
                 }
             );
-            console.log("Quote removed from bookmarks");
+
         } else {
-            console.log("Quote added to bookmarks");
             await collection.findOneAndUpdate(
                 { name: User.name },
                 {
@@ -100,7 +91,7 @@ async function storeBookmarkForUser(req, res) {
             );
             
         }
-        res.send(200);
+        res.sendStatus(200);
     } catch (error) {
         console.log(error);
     }
@@ -122,7 +113,6 @@ async function openBookmarksPage(req,res) {
         const JustQuotes = await quoteCollection.findOne({ name: "QuotesAccess" });
          allQuotes = JustQuotes.quote
 
-    console.log("All quotes length:", allQuotes.length);
 
 
 
@@ -138,11 +128,9 @@ if (allQuotes) {
 
     res.render('bookmarks', { quotes: quotesWithIds });
   } else {
-    console.log('No bookmarked quotes found');
     res.render('bookmarks', { quotes: [] });
   }
 } else {
-  console.log('No quotes found');
   res.render('bookmarks', { quotes: [] });
 }
 
@@ -156,10 +144,8 @@ if (allQuotes) {
 }
 
 async function deleteBookmark(req,res) {
-    console.log("ID OF QUOTE ===" + req.body.quoteId);
 
   const User = req.user;
-  console.log("current quote no=" + req.body.currentQuote);
 
   try {
     const userCollection = await collection.findOne({ name: User.name });
