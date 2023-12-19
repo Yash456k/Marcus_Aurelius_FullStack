@@ -1,135 +1,117 @@
-:root{
-  --background-col : #f9f9f9;
-    --title-col : black;
-    --title-text : #f9f9f9;
-    --button-bg-col : black;
-    --text-col : black;
-    --button-text-col : white;
-    --link-col : #f9f9f9;
-
+:root {
+  --background-col: #f9f9f9;
+  --title-col: black;
+  --title-text: #f9f9f9;
+  --button-bg-col: black;
+  --text-col: black;
+  --button-text-col: white;
+  --link-col: #f9f9f9;
 }
 
-
-.theme-purp{
-  --background-col :#FFFBF5;
-  --title-col :     #F7EFE5;
-  --title-text :    #8d7997;
-  --button-bg-col : #FFFBF5;
-  --text-col :      #C3ACD0;
-  --button-text-col:#8c2c91;
-  --link-col :      #70438a;
+.theme-purp {
+  --background-col: #fffbf5;
+  --title-col: #f7efe5;
+  --title-text: #8d7997;
+  --button-bg-col: #fffbf5;
+  --text-col: #c3acd0;
+  --button-text-col: #8c2c91;
+  --link-col: #70438a;
 }
 
-.bw{
-    --background-col : #f9f9f9;
-    --title-col :      black;
-    --title-text :     #f9f9f9;
-    --button-bg-col :  black;
-    --text-col :       black;
-    --button-text-col :white;
-    --link-col :       #f9f9f9;
+.bw {
+  --background-col: #f9f9f9;
+  --title-col: black;
+  --title-text: #f9f9f9;
+  --button-bg-col: black;
+  --text-col: black;
+  --button-text-col: white;
+  --link-col: #f9f9f9;
 }
 
-.forest{
-  --background-col :#3A4D39;
-  --title-col :     #739072;
-  --title-text :    #ECE3CE;
-  --button-bg-col : #739072;
-  --text-col :      #739072;
-  --button-text-col:#ECE3CE;
-  --link-col :      #ECE3CE;
-
+.forest {
+  --background-col: #3a4d39;
+  --title-col: #739072;
+  --title-text: #ece3ce;
+  --button-bg-col: #739072;
+  --text-col: #739072;
+  --button-text-col: #ece3ce;
+  --link-col: #ece3ce;
 }
-
-
 
 body {
-    display: flex;
-    background-color: var(--background-col);
-    color: var(--text-col);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    font-family: 'Kalam', cursive;
-    transition: background ease-in-out .4s, color ease-in-out .4s;
+  display: flex;
+  background-color: var(--background-col);
+  color: var(--text-col);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Kalam", cursive;
+  transition: background ease-in-out 0.4s, color ease-in-out 0.4s;
 }
 .round-button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; 
-    margin: 40px 5px; 
-    position: relative;
-    overflow: hidden;
-    border : 2px solid var(--text-col);
-    transition: border ease-in-out .4s;
-  }
-
-
-  
-  .half {
-    width: 100%;
-    height: 50%;
-    position: absolute;
-  }
-  
-  .top-half {
-    top: 0;
-    right: 0;
-   
-  }
-  
-  .bottom-half {
-    bottom: 0;
-    right: 0;
-  }
-
-  #theme-purp-button .top-half{
-    
-    background-color: #F7EFE5;
-  }
-  #theme-purp-button .bottom-half{
-    background-color: #C3ACD0;
-  }
-
-
-  #theme-bw-button .top-half{
-    background-color: black;
-  }
-  #theme-bw-button .bottom-half{
-    background-color: #f9f9f9;
-  }
-
-
-  #theme-green-button .top-half{
-    background-color: #ECE3CE;
-  }
-  #theme-green-button .bottom-half{
-    background-color: #739072;
-  }
-
-  
-  
-  
-
-
-.title-div{
-    width: 100%;
-    background-color: var(--title-col);
-    margin: 0;
-    padding: 0;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, .5);
-    transition: background ease-in-out .4s, color ease-in-out .4s;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 40px 5px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--text-col);
+  transition: border ease-in-out 0.4s;
 }
 
+.half {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+}
+
+.top-half {
+  top: 0;
+  right: 0;
+}
+
+.bottom-half {
+  bottom: 0;
+  right: 0;
+}
+
+#theme-purp-button .top-half {
+  background-color: #f7efe5;
+}
+#theme-purp-button .bottom-half {
+  background-color: #c3acd0;
+}
+
+#theme-bw-button .top-half {
+  background-color: black;
+}
+#theme-bw-button .bottom-half {
+  background-color: #f9f9f9;
+}
+
+#theme-green-button .top-half {
+  background-color: #ece3ce;
+}
+#theme-green-button .bottom-half {
+  background-color: #739072;
+}
+
+.title-div {
+  width: 100%;
+  background-color: var(--title-col);
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+  transition: background ease-in-out 0.4s, color ease-in-out 0.4s;
+}
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .tweakButtons {
@@ -140,28 +122,26 @@ body {
   align-items: center;
 }
 
-
 .saveBookmarkButton {
   color: var(--button-text-col);
-  background-color: var(--button-bg-col) ;
+  background-color: var(--button-bg-col);
   margin-top: 20px;
   margin-bottom: 40px;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, .5);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
   padding: 12px;
   border: none;
-  transition: background ease-in-out .8s, color ease-in-out .8s, margin .15s, box-shadow .15s;
+  transition: background ease-in-out 0.8s, color ease-in-out 0.8s, margin 0.15s,
+    box-shadow 0.15s;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .saveBookmarkButton:active {
   margin-top: 30px;
   margin-bottom: 30px;
   box-shadow: none;
 }
-
 
 .button-container {
   display: flex;
@@ -170,50 +150,46 @@ body {
 }
 
 .page-title {
-    padding: 10px;
-    font-size: 2.7rem;
-    font-family: 'Poppins', sans-serif;
-    font-family:cursive;
-    color: var(--title-text);
-    text-align: center;
-    transition: background ease-in-out .2s, color ease-in-out .2s;
-
-    
+  padding: 10px;
+  font-size: 2.7rem;
+  font-family: "Poppins", sans-serif;
+  font-family: cursive;
+  color: var(--title-text);
+  text-align: center;
+  transition: background ease-in-out 0.2s, color ease-in-out 0.2s;
 }
-
 
 .quote-button {
-    color: var(--button-text-col);
-    background-color: var(--button-bg-col) ;
-    font-size: 2rem;
-    margin-top: 20px;
-    border-radius: 100px;
-    font-family: 'Kalam', cursive;
-    font-weight: bold;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, .5);
-    margin-bottom: 70px;
-    padding: 12px;
-    border: none;
-    transition: background ease-in-out .6s, color ease-in-out .6s , margin .25s , box-shadow .25s;
-
-
+  color: var(--button-text-col);
+  background-color: var(--button-bg-col);
+  font-size: 2rem;
+  margin-top: 20px;
+  border-radius: 100px;
+  font-family: "Kalam", cursive;
+  font-weight: bold;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+  margin-bottom: 70px;
+  padding: 12px;
+  border: none;
+  transition: background ease-in-out 0.6s, color ease-in-out 0.6s, margin 0.25s,
+    box-shadow 0.25s;
 }
 
-.quote-button:active{
-
+.quote-button:active {
   margin-top: 30px;
   margin-bottom: 90px;
   box-shadow: none;
 }
 
 .quote {
-    color: var(--text-col) ;
-    max-width: 60%;
-    font-size: 1.4rem;
-    padding: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    transition: background ease-in-out .2s, color ease-in-out .2s , opacity ease .2s ;
+  color: var(--text-col);
+  max-width: 60%;
+  font-size: 1.4rem;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  transition: background ease-in-out 0.2s, color ease-in-out 0.2s,
+    opacity ease 0.2s;
 }
 
 .logout-form {
@@ -223,19 +199,19 @@ body {
 }
 
 .logout-button {
-  background-color:var(--title-text);;
-  color:  var(--button-bg-col);
+  background-color: var(--title-text);
+  color: var(--button-bg-col);
   font-size: 1rem;
   padding: 8px 12px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: background ease-in-out .8s, color ease-in-out .8s;
+  transition: background ease-in-out 0.8s, color ease-in-out 0.8s;
 }
 
 .logout-button:active {
   background-color: var(--button-bg-col);
-  color: var(--title-text);;
+  color: var(--title-text);
 }
 .bookmark-form {
   position: absolute;
@@ -244,21 +220,20 @@ body {
 }
 
 .bookmark-button {
-  background-color:var(--title-text);;
-  color:  var(--button-bg-col);
+  background-color: var(--title-text);
+  color: var(--button-bg-col);
   font-size: 1rem;
   padding: 8px 12px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: background ease-in-out .8s, color ease-in-out .8s;
+  transition: background ease-in-out 0.8s, color ease-in-out 0.8s;
 }
 
 .bookmark-button:active {
   background-color: var(--button-bg-col);
-  color: var(--title-text);;
+  color: var(--title-text);
 }
-
 
 .button-container {
   display: flex;
@@ -266,30 +241,30 @@ body {
   align-items: center;
 }
 
-#refresh-svg{
+#refresh-svg {
   fill: var(--button-text-col);
-  transition: fill ease-in-out .8s
+  transition: fill ease-in-out 0.8s;
 }
 
 #bookmarkedIcon {
   fill: var(--button-text-col);
-  transition: fill ease-in-out .8s
+  transition: fill ease-in-out 0.8s;
 }
 
 .refresh-button {
   color: var(--button-text-col);
-  background-color: var(--button-bg-col) ;
+  background-color: var(--button-bg-col);
   margin-top: 20px;
   margin-bottom: 40px;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, .5);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
   padding: 12px;
   border: none;
-  transition: background ease-in-out .8s, color ease-in-out .8s, margin .15s, box-shadow .15s;
+  transition: background ease-in-out 0.8s, color ease-in-out 0.8s, margin 0.15s,
+    box-shadow 0.15s;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .refresh-button:active {
   margin-top: 30px;
@@ -310,7 +285,6 @@ body {
   word-break: break-word;
 }
 
-
 footer {
   width: 100vw;
   background-color: var(--title-col);
@@ -318,10 +292,10 @@ footer {
   padding: 10px;
   position: fixed;
   bottom: -1px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   transition: background ease-in-out 1.1s, color ease-in-out 1.1s;
-  box-shadow: 0px -1px 20px rgba(0, 0, 0, .5);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0px -1px 20px rgba(0, 0, 0, 0.5);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -339,35 +313,32 @@ footer {
 footer * {
   color: var(--link-col);
   margin: 0px 20px;
-  transition: color ease-in-out .4s;
+  transition: color ease-in-out 0.4s;
 }
-
-
 
 @media (max-width: 600px) {
-    .quote {
-        max-width: 80%; 
-        margin-top: 60px;
-        font-size: 1.3rem;
-    }
-    .button-container {
-      flex-direction: column;
-      justify-content: space-around;
-    }
+  .quote {
+    max-width: 80%;
+    margin-top: 60px;
+    font-size: 1.3rem;
+  }
+  .button-container {
+    flex-direction: column;
+    justify-content: space-around;
+  }
 
-    .round-button {
-      width: 60px;
-      height: 60px;
-      margin: 40px 15px;
-    }
+  .round-button {
+    width: 60px;
+    height: 60px;
+    margin: 40px 15px;
+  }
 
-    .page-title{
-      font-size: 1.7rem;
-      margin-top: 40px;
-    }
+  .page-title {
+    font-size: 1.7rem;
+    margin-top: 40px;
+  }
 
-    footer *{
-      margin: 0px 6px;
-    }
+  footer * {
+    margin: 0px 6px;
+  }
 }
-

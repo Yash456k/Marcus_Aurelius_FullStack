@@ -1,66 +1,58 @@
 require("dotenv").config();
 const collection = require("../model/mongodb");
 const bcrypt = require("bcrypt");
-const {setUser} = require('../service/auth')
+const { setUser } = require("../service/auth");
 
+async function handleUserLogin(req, res) {
+  try {
+    const check = await collection.findOne({ name: req.body.name });
 
-async function handleUserLogin(req,res) {
-    try{
-        const check = await collection.findOne({name:req.body.name})
+    if (await bcrypt.compare(req.body.password, check.password)) {
+      const token = setUser(check);
+      res.cookie("uid", token, {
+        httpOnly: true,
+        maxAge: 1.44e7,
+        secure: true,
+      });
 
-        if(await bcrypt.compare(req.body.password, check.password))
-        {
-            const token = setUser(check);
-            res.cookie('uid', token, {
-                httpOnly: true,
-                maxAge: 1.44e+7,
-                secure: true  
-            });
-
-            return res.redirect('/');
-            
-        }
-        else
-        return res.render("login",{error:"Wrong password buddy, try again"});
-    }catch(error){
-        return res.send("problem logging in")
-        
-    }
+      return res.redirect("/");
+    } else
+      return res.render("login", { error: "Wrong password buddy, try again" });
+  } catch (error) {
+    return res.send("problem logging in");
+  }
 }
 
-async function handleUserSignup(req,res) {
-
-    const UserExist = await collection.findOne({name:req.body.name})
-    if(UserExist)
-    res.render('signup',{error:"Username already exists !"});
-    else {
-        const hashPass = await bcrypt.hash(req.body.password ,10)
-    const data= {
-        name:req.body.name,
-        password:hashPass,
-        quotesViewed:[],
-        bookmarks:[]
+async function handleUserSignup(req, res) {
+  const UserExist = await collection.findOne({ name: req.body.name });
+  if (UserExist) res.render("signup", { error: "Username already exists !" });
+  else {
+    const hashPass = await bcrypt.hash(req.body.password, 10);
+    const data = {
+      name: req.body.name,
+      password: hashPass,
+      quotesViewed: [],
+      bookmarks: [],
     };
 
     await collection.insertMany([data]);
 
     return res.redirect("/user/login");
-    }
+  }
 }
 
- function handleUserLogout(req,res) {
-    try {
-    res.cookie('uid', '', { maxAge: 0 });
+function handleUserLogout(req, res) {
+  try {
+    res.cookie("uid", "", { maxAge: 0 });
     req.user = null;
-    return res.redirect('/');
-    } catch (error) {
-        console.log(error)
-    }
+    return res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 module.exports = {
-    handleUserLogin,
-    handleUserSignup,
-    handleUserLogout,
-    
-}
+  handleUserLogin,
+  handleUserSignup,
+  handleUserLogout,
+};

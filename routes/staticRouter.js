@@ -1,35 +1,33 @@
 require("dotenv").config();
-const express=require("express");
+const express = require("express");
 const router = express();
 
-const {restrictToLoggedinUserOnly} = require('../middleware/auth')
-const { refreshQuotes, storeQuoteInDB, ReturnUserQuoteArray, storeBookmarkForUser, openBookmarksPage, deleteBookmark} = require('../controllers/staticRouter')
+const { restrictToLoggedinUserOnly } = require("../middleware/auth");
+const {
+  refreshQuotes,
+  storeQuoteInDB,
+  ReturnUserQuoteArray,
+  storeBookmarkForUser,
+  openBookmarksPage,
+  deleteBookmark,
+} = require("../controllers/staticRouter");
 
+router.get("/", (req, res) => {
+  const Name = req.user;
+  if (!Name) res.render("home", { user: false });
+  else res.render("home", { name: Name.name, user: true });
+});
 
-router.get('/',(req,res)=>{
-    
-    const Name = req.user;
-    if(!Name) 
-    res.render('home',{user:false});
-    else
-    res.render("home",{name : Name.name,user:true});
+router.get("/user-quote-array", ReturnUserQuoteArray);
 
-})
+router.post("/refresh-quotes", refreshQuotes);
 
-router.get('/user-quote-array',ReturnUserQuoteArray)
+router.post("/quote", storeQuoteInDB);
 
-router.post("/refresh-quotes",refreshQuotes)
+router.post("/bookmark-quote", storeBookmarkForUser);
 
-router.post('/quote',storeQuoteInDB)
+router.get("/bookmarks", restrictToLoggedinUserOnly, openBookmarksPage);
 
-router.post('/bookmark-quote',storeBookmarkForUser)
+router.post("/bookmarkDelete", deleteBookmark);
 
-router.get('/bookmarks', restrictToLoggedinUserOnly, openBookmarksPage);
-
-router.post('/bookmarkDelete',deleteBookmark);
-
-
-module.exports = router
-
-
-
+module.exports = router;

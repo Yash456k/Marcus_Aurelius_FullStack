@@ -1,42 +1,40 @@
-const {getuser} = require('../service/auth')
+const { getuser } = require("../service/auth");
 
+async function restrictToLoggedinUserOnly(req, res, next) {
+  const userUid = req.cookies?.uid;
 
-async function restrictToLoggedinUserOnly (req,res,next) {
-    const userUid = req.cookies?.uid;
+  if (!userUid) return res.redirect("/user/login");
 
-    if(!userUid)  return res.redirect('/user/login')
+  const user = getuser(userUid);
 
-    const user = getuser(userUid);
+  if (!user) return res.redirect("/user/login");
 
-    if(!user)  return res.redirect('/user/login')
+  req.user = user;
 
-    req.user = user;
-
-    next()
+  next();
 }
 
-async function checkAuth(req,res,next) {
-    const userUid = req.cookies?.uid;
+async function checkAuth(req, res, next) {
+  const userUid = req.cookies?.uid;
 
-    
-    const User = getuser(userUid);
-    req.user = User;
+  const User = getuser(userUid);
+  req.user = User;
 
-    next()
+  next();
 }
 
-async function restrictToNotLoggedInUserOnly(req,res,next) {
+async function restrictToNotLoggedInUserOnly(req, res, next) {
+  const userUid = req.cookies?.uid;
 
-    const userUid = req.cookies?.uid;
+  const user = getuser(userUid);
 
+  if (user) return res.redirect("/");
 
-
-    const user = getuser(userUid);
-
-    if(user)  return res.redirect('/')
-
-    next()
-
+  next();
 }
 
-module.exports= {restrictToLoggedinUserOnly , checkAuth , restrictToNotLoggedInUserOnly };
+module.exports = {
+  restrictToLoggedinUserOnly,
+  checkAuth,
+  restrictToNotLoggedInUserOnly,
+};

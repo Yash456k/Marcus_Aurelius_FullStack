@@ -1,73 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/bookmark.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Nabla&family=Permanent+Marker&family=Poppins&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/bookmark.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Nabla&family=Permanent+Marker&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <title>Bookmarks</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="title-div">
-        <h1 class="page-title">Quotes by Marcus Aurelius</h1>
+      <h1 class="page-title">Quotes by Marcus Aurelius</h1>
     </div>
 
     <div class="colors">
+      <button id="theme-purp-button" class="round-button">
+        <div class="half top-half"></div>
+        <div class="half bottom-half"></div>
+      </button>
 
-        <button id="theme-purp-button" class="round-button">
-            <div class="half top-half"></div>
-            <div class="half bottom-half"></div>
-          </button>
-          
-          <button id="theme-bw-button" class="round-button">
-            <div class="half top-half"></div>
-            <div class="half bottom-half"></div>
-          </button>
-          
-          <button id="theme-green-button" class="round-button">
-            <div class="half top-half"></div>
-            <div class="half bottom-half"></div>
-          </button>
-          
-        </div>
+      <button id="theme-bw-button" class="round-button">
+        <div class="half top-half"></div>
+        <div class="half bottom-half"></div>
+      </button>
+
+      <button id="theme-green-button" class="round-button">
+        <div class="half top-half"></div>
+        <div class="half bottom-half"></div>
+      </button>
+    </div>
 
     <div class="card">
-        <div class="form-div">
-            <h1 class="form-title">Bookmark Page</h1>
+      <div class="form-div">
+        <h1 class="form-title">Bookmark Page</h1>
+      </div>
+
+      <div class="container">
+        <% quotes.forEach(element => { %>
+        <div class="quoteCard">
+          <%= element.content %>
+
+          <form action="/bookmarkDelete" method="POST" class="delete-form">
+            <input type="hidden" name="quoteId" value="<%= element.id %>" />
+            <button type="submit" class="delete-button">
+              <svg
+                fill="#ff0000"
+                height="18px"
+                width="18px"
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 57 57"
+                xml:space="preserve"
+                stroke="#ff0000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <path
+                      d="M41,31c-7.168,0-13,5.832-13,13s5.832,13,13,13s13-5.832,13-13S48.168,31,41,31z M41,55c-6.065,0-11-4.935-11-11 s4.935-11,11-11s11,4.935,11,11S47.065,55,41,55z"
+                    ></path>
+                    <path
+                      d="M45.95,39.051c-0.391-0.391-1.023-0.391-1.414,0L41,42.586l-3.536-3.535c-0.391-0.391-1.023-0.391-1.414,0 s-0.391,1.023,0,1.414L39.586,44l-3.536,3.535c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293 s0.512-0.098,0.707-0.293L41,45.414l3.536,3.535c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293 c0.391-0.391,0.391-1.023,0-1.414L42.414,44l3.536-3.535C46.34,40.074,46.34,39.441,45.95,39.051z"
+                    ></path>
+                    <rect x="3" width="34" height="11"></rect>
+                    <path
+                      d="M37,27.495V13H3v41.443C3,55.302,3.699,56,4.559,56c0.412,0,0.801-0.162,1.091-0.452L20,41l4.056,4.112 C24.032,44.743,24,44.375,24,44C24,36.006,29.553,29.301,37,27.495z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </form>
         </div>
+        <% }) %>
 
-        <div class="container">
-           
+        <form action="/user/logout" method="POST" class="logout-form">
+          <button type="submit" class="logout-button">Logout</button>
+        </form>
+        <form action="/" method="GET" class="bookmark-form">
+          <button type="submit" class="bookmark-button">Home</button>
+        </form>
 
-            <% quotes.forEach(element => { %>
-                <div class="quoteCard">
-                    <%= element.content %>
-                    
-                    <form action="/bookmarkDelete" method="POST" class="delete-form">
-                        <input type="hidden" name="quoteId" value="<%= element.id %>">
-                        <button type="submit" class="delete-button">
-                            <svg fill="#ff0000" height="18px" width="18px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 57 57" xml:space="preserve" stroke="#ff0000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M41,31c-7.168,0-13,5.832-13,13s5.832,13,13,13s13-5.832,13-13S48.168,31,41,31z M41,55c-6.065,0-11-4.935-11-11 s4.935-11,11-11s11,4.935,11,11S47.065,55,41,55z"></path> <path d="M45.95,39.051c-0.391-0.391-1.023-0.391-1.414,0L41,42.586l-3.536-3.535c-0.391-0.391-1.023-0.391-1.414,0 s-0.391,1.023,0,1.414L39.586,44l-3.536,3.535c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293 s0.512-0.098,0.707-0.293L41,45.414l3.536,3.535c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293 c0.391-0.391,0.391-1.023,0-1.414L42.414,44l3.536-3.535C46.34,40.074,46.34,39.441,45.95,39.051z"></path> <rect x="3" width="34" height="11"></rect> <path d="M37,27.495V13H3v41.443C3,55.302,3.699,56,4.559,56c0.412,0,0.801-0.162,1.091-0.452L20,41l4.056,4.112 C24.032,44.743,24,44.375,24,44C24,36.006,29.553,29.301,37,27.495z"></path> </g> </g></svg>
-                        </button>
-                    </form>
-                </div>
-            <% }) %>
-
-            <form action="/user/logout" method="POST" class="logout-form">
-                <button type="submit" class="logout-button">Logout</button>
-            </form>
-            <form action="/" method="GET" class="bookmark-form">
-              <button type="submit" class="bookmark-button">Home</button>
-            </form>
-
-            
-            <a class="homepage-link" href="/">Back to Quotes</a>
-        </div>
+        <a class="homepage-link" href="/">Back to Quotes</a>
+      </div>
     </div>
     <script src="/javascript/bookmark.js"></script>
-</body>
-
+  </body>
 </html>
