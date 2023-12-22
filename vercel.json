@@ -1,5 +1,0 @@
-{
-  "version": 2,
-  "name": "Marcus-Project",
-  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
-}
