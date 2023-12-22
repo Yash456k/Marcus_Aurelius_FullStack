@@ -20,7 +20,4 @@ const userRoute = require("../routes/user");
 app.use("/", checkAuth, staticRouter);
 app.use("/user", userRoute);
 
-console.log(process.env.PORT);
-app.listen(process.env.PORT, () => {
-  console.log("Port connected");
-});
+module.exports = app;
