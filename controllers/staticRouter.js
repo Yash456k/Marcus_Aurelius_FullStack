@@ -3,7 +3,7 @@ const { quoteCollection } = require("../model/quotes");
 
 async function ReturnUserQuoteArray(req, res) {
   let responseData = null;
-  if (req.user) {
+  if (req.user != null) {
     const User = await collection.findOne({ name: req.user.name });
     responseData = {
       quotesViewed: User.quotesViewed,
