@@ -241,7 +241,7 @@ let copyQuotes = [
   ],
   [
     48,
-    "v.6)Some men, when they do you a kindness, at once demand the payment of gratitude from you; others are more modest than this. However, they remember the favour, and look upon you in a manner as their debtor. A third sort shall scarce know what they have done. These are much like a vine, which is satisfied by being fruitful in its kind, and bears a bunch of grapes without expecting any thanks for it. A fleet horse or greyhound does not make a noise when they have done well, nor a bee neither when she has made a little honey. And thus a man that has done a kindness never proclaims it, but does another as soon as he can, just like a vine that bears again the next season. Now we should imitate those who are so obliging, as hardly to reflect on their beneficence. But you will say, a man ought not to act without reflection. It is surely natural for one that is generous to be conscious of his generosity; yes, truly, and to desire the person obliged should be sensible of it too. What you say is in a great measure true. But if you mistake my meaning, you will become one of those untoward benefactors I first mentioned; indeed, they too are misled by the plausibility of their reasoning. But if you will view the matter in its true colors, never fear that you will neglect any social act.",
+    "v.6)Some men, when they do you a kindness, at once demand the payment of gratitude from you; others are more modest than this. However, they remember the favour, and look upon you in a manner as their debtor. A third sort shall scarce know what they have done. These are much like a vine, which is satisfied by being fruitful in its kind, and bears a bunch of grapes without expecting any thanks for it. A fleet horse or greyhound does not make a noise when they have done well, nor a bee neither when she has made a little honey. And thus a man that has done a kindness never proclaims it, but does another as soon as he can. Now we should imitate those who are so obliging, as hardly to reflect on their beneficence.",
     false,
   ],
   [
@@ -640,9 +640,8 @@ async function quoteGen() {
   document.querySelector(".quote-button").textContent = "Next Quote";
 
   if (copyQuotes.length === 0) {
-    $(".quote").text(
-      "No more quotes! Press the 'Refresh Quotes' button to refresh quotes"
-    );
+    document.querySelector(".quote").textContent =
+      " No more quotes! Press the 'Refresh Quotes' button to refresh quotes";
     noMoreQuotes = true;
   } else {
     try {
@@ -650,7 +649,7 @@ async function quoteGen() {
         copyQuotes.splice(prevRandQuote, 1);
       }
       if (copyQuotes.length === 0) {
-        $(".quote").text("No more quotes !");
+        document.querySelector(".quote").textContent = "No more quotes !";
         noMoreQuotes = true;
       } else {
         randQuote = Math.ceil(Math.random() * copyQuotes.length) - 1;
@@ -750,20 +749,26 @@ function removeClass() {
   document.body.classList.remove("forest");
 }
 
-$("#theme-purp-button").on("mousedown touchstart", function (event) {
-  removeClass();
-  document.body.classList.add("theme-purp");
-  localStorage.setItem("theme", "theme-purp");
-});
+document
+  .getElementById("theme-purp-button")
+  .addEventListener("click", function (event) {
+    removeClass();
+    document.body.classList.add("theme-purp");
+    localStorage.setItem("theme", "theme-purp");
+  });
 
-$("#theme-bw-button").on("mousedown touchstart", function (event) {
-  removeClass();
-  document.body.classList.add("bw");
-  localStorage.setItem("theme", "bw");
-});
+document
+  .getElementById("theme-bw-button")
+  .addEventListener("click", function (event) {
+    removeClass();
+    document.body.classList.add("bw");
+    localStorage.setItem("theme", "bw");
+  });
 
-$("#theme-green-button").on("mousedown touchstart", function (event) {
-  removeClass();
-  document.body.classList.add("forest");
-  localStorage.setItem("theme", "forest");
-});
+document
+  .getElementById("theme-green-button")
+  .addEventListener("click", function (event) {
+    removeClass();
+    document.body.classList.add("forest");
+    localStorage.setItem("theme", "forest");
+  });
