@@ -3,6 +3,7 @@
   src: url("/fonts/Kalam-Bold.woff2") format("woff2");
   font-weight: 400;
   font-style: cursive;
+  font-display: swap;
 }
 :root {
   --background-col: #f9f9f9;
