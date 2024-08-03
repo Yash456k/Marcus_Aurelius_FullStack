@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 const staticRouter = require("./routes/staticRouter");
